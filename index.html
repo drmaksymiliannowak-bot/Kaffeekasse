@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>Kaffeekasse</title>
+<style>
+  :root {
+    --bg: #f2f2f7; --card: #ffffff; --fill: #f2f2f7; --sep: rgba(60,60,67,.14);
+    --text: #000000; --sec: rgba(60,60,67,.6); --ter: rgba(60,60,67,.3);
+    --blue: #007aff; --green: #34c759; --red: #ff3b30; --orange: #ff9500;
+    --green-soft: rgba(52,199,89,.16); --red-soft: rgba(255,59,48,.14);
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 20px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --card: #1c1c1e; --fill: #2c2c2e; --sep: rgba(84,84,88,.5);
+      --text: #ffffff; --sec: rgba(235,235,245,.6); --ter: rgba(235,235,245,.3);
+      --blue: #0a84ff; --green: #30d158; --red: #ff453a; --orange: #ff9f0a;
+      --green-soft: rgba(48,209,88,.2); --red-soft: rgba(255,69,58,.2);
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.35 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; }
+  main { max-width: 520px; margin: 0 auto; padding: max(24px, env(safe-area-inset-top)) 16px 56px; }
+
+  .title { font-size: 34px; line-height: 1.1; font-weight: 700; letter-spacing: -.02em; margin: 12px 4px 4px; }
+  .subtitle { color: var(--sec); margin: 0 4px 24px; font-size: 15px; }
+  .section { font-size: 13px; text-transform: uppercase; letter-spacing: .02em; color: var(--sec);
+    margin: 28px 20px 8px; }
+  .footer { font-size: 13px; color: var(--sec); margin: 8px 20px 0; }
+
+  .card { background: var(--card); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+  .pad { padding: 20px; }
+  .list > .item { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 13px 16px; min-height: 48px; }
+  .list > .item + .item { border-top: .5px solid var(--sep); margin-left: 16px; padding-left: 0; padding-right: 16px; }
+  .item .k { color: var(--text); } .item .v { color: var(--sec); font-variant-numeric: tabular-nums; text-align: right; }
+  .item .v.strong { color: var(--text); font-weight: 600; }
+  .pos { color: var(--green) !important; } .neg { color: var(--red) !important; }
+
+  /* Kassenstand */
+  .hero { text-align: center; padding: 28px 20px 22px; }
+  .hero small { display: block; color: var(--sec); font-size: 15px; font-weight: 500; }
+  .hero .num { font-size: 54px; font-weight: 700; letter-spacing: -.03em; line-height: 1.1;
+    font-variant-numeric: tabular-nums; margin-top: 6px; }
+  .hero .note { color: var(--sec); font-size: 13px; margin-top: 6px; }
+
+  /* Balken */
+  .bars { padding: 6px 16px 14px; }
+  .bar { padding: 10px 0; }
+  .bar + .bar { border-top: .5px solid var(--sep); }
+  .bar .t { display: flex; justify-content: space-between; align-items: baseline; font-size: 15px; margin-bottom: 7px; }
+  .bar .t .n { font-weight: 600; } .bar .t .a { color: var(--sec); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .track { height: 6px; background: var(--fill); border-radius: 3px; overflow: hidden; }
+  .track + .track { margin-top: 4px; }
+  .fill { height: 100%; border-radius: 3px; background: var(--orange); transition: width .6s cubic-bezier(.2,.8,.2,1); }
+  .fill.in { background: var(--green); } .fill.out { background: var(--red); }
+  .legend { display: flex; gap: 14px; padding: 4px 16px 16px; color: var(--sec); font-size: 13px; }
+  .legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+
+  /* Auswahl */
+  .select-wrap { position: relative; }
+  select, input { width: 100%; appearance: none; -webkit-appearance: none; border: 0; outline: 0;
+    background: var(--card); color: var(--text); font: inherit; border-radius: 14px; padding: 15px 16px; }
+  select { padding-right: 44px; font-weight: 500; box-shadow: var(--shadow); }
+  .select-wrap::after { content: ""; position: absolute; right: 18px; top: 50%; width: 8px; height: 8px;
+    border-right: 2px solid var(--ter); border-bottom: 2px solid var(--ter);
+    transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+  .field { background: var(--fill); }
+  .card select, .card input { background: var(--fill); box-shadow: none; }
+  .card label { display: block; font-size: 13px; color: var(--sec); margin: 0 4px 6px; }
+  .card .field-group + .field-group { margin-top: 16px; }
+
+  /* Status */
+  .status { display: flex; align-items: center; gap: 14px; }
+  .status .ico { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .status .ico svg { width: 26px; height: 26px; }
+  .status.ok .ico { background: var(--green-soft); color: var(--green); }
+  .status.open .ico { background: var(--red-soft); color: var(--red); }
+  .status strong { display: block; font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+  .status span { color: var(--sec); font-size: 15px; }
+
+  .months { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 20px 20px; }
+  .m { text-align: center; padding: 10px 0; border-radius: 12px; font-size: 14px; font-weight: 500;
+    background: var(--fill); color: var(--sec); }
+  .m.paid { background: var(--green-soft); color: var(--green); font-weight: 600; }
+  .m.due { background: var(--red-soft); color: var(--red); font-weight: 600; }
+  .m.skip, .m.inactive { opacity: .45; }
+
+  /* Button */
+  .pay { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; height: 54px;
+    margin-top: 20px; background: var(--blue); color: #fff; font-weight: 600; font-size: 17px;
+    border-radius: 16px; text-decoration: none; transition: transform .12s, opacity .12s; }
+  .pay:active { transform: scale(.98); opacity: .85; }
+  .pay[aria-disabled="true"] { opacity: .35; pointer-events: none; }
+
+  .ref { margin-top: 16px; background: var(--fill); border-radius: 14px; padding: 12px 14px; }
+  .ref small { display: block; color: var(--sec); font-size: 12px; margin-bottom: 2px; }
+  .ref b { font-weight: 600; word-break: break-word; }
+  .copy { margin-top: 10px; width: 100%; border: 0; background: none; color: var(--blue);
+    font: inherit; font-weight: 500; padding: 8px; cursor: pointer; }
+  .empty { color: var(--sec); text-align: center; padding: 8px 0; }
+
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) { .fill, .pay { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <h1 class="title">Kaffeekasse</h1>
+  <p class="subtitle">Alle Zahlen auf einen Blick.</p>
+
+  <div class="card" id="overview" hidden>
+    <div class="hero">
+      <small>Aktuell in der Kasse</small>
+      <div class="num" id="balance"></div>
+      <div class="note" id="startNote"></div>
+    </div>
+    <div class="list" style="border-top:.5px solid var(--sep)">
+      <div class="item"><span class="k">Einnahmen</span><span class="v pos" id="income"></span></div>
+      <div class="item"><span class="k">Ausgaben</span><span class="v neg" id="expenses"></span></div>
+    </div>
+  </div>
+
+  <div id="monthSection" hidden>
+    <div class="section">Monat für Monat</div>
+    <div class="card">
+      <div class="bars" id="monthBars"></div>
+      <div class="legend"><span><i style="background:var(--green)"></i>Einnahmen</span><span><i style="background:var(--red)"></i>Ausgaben</span></div>
+    </div>
+  </div>
+
+  <div id="catSection" hidden>
+    <div class="section">Wofür wir Geld ausgeben</div>
+    <div class="card"><div class="bars" id="catBars"></div></div>
+  </div>
+
+  <div class="section">Mein Stand</div>
+  <div class="select-wrap">
+    <select id="who" aria-label="Wer bist du?"><option value="">Namen auswählen …</option></select>
+  </div>
+
+  <section id="view" hidden>
+    <div class="card" style="margin-top:16px">
+      <div class="pad"><div class="status" id="status"></div></div>
+      <div class="months" id="months"></div>
+      <div class="list" style="border-top:.5px solid var(--sep)">
+        <div class="item"><span class="k">Beitrag pro Monat</span><span class="v strong" id="rate"></span></div>
+        <div class="item"><span class="k">Dieses Jahr bezahlt</span><span class="v strong" id="paidYear"></span></div>
+      </div>
+    </div>
+
+    <div class="section">Bezahlen</div>
+    <div class="card pad">
+      <div id="payForm">
+        <div class="field-group">
+          <label for="count">Wofür möchtest du zahlen?</label>
+          <div class="select-wrap"><select id="count"></select></div>
+        </div>
+        <div class="field-group">
+          <label for="amount">Betrag in Euro</label>
+          <input id="amount" type="number" inputmode="decimal" min="1" step="0.5">
+        </div>
+      </div>
+      <div id="payNone" class="empty" hidden>Für dich sind aktuell keine Monate zu zahlen.</div>
+      <a id="pay" class="pay" target="_blank" rel="noopener">Mit PayPal bezahlen</a>
+      <div class="ref">
+        <small>Bitte bei PayPal als Nachricht angeben</small>
+        <b id="ref"></b>
+        <button class="copy" id="copy" type="button">Text kopieren</button>
+      </div>
+    </div>
+    <p class="footer">Zahlungen werden vom Kassenwart bestätigt und erscheinen danach hier.</p>
+  </section>
+
+  <p class="footer" id="foot" style="text-align:center;margin-top:32px">Lade Daten …</p>
+</main>
+
+<script>
+const MONTH_NAMES = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+const eur = v => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(v);
+const $ = id => document.getElementById(id);
+let data;
+
+const ym = (y, m) => y + '-' + String(m).padStart(2, '0');
+const nowYM = () => { const d = new Date(); return ym(d.getFullYear(), d.getMonth() + 1); };
+const active = (m, k) => !(m.startMonth && k < m.startMonth) && !(m.endMonth && k > m.endMonth);
+const entry = (m, k) => !active(m, k) ? { status: 'inactive' } : (m.months && m.months[k]) || { status: 'unpaid' };
+const monthLabel = k => MONTH_NAMES[Number(k.slice(5)) - 1] + ' ' + k.slice(0, 4);
+
+const ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const ICON_OPEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+
+function stats(m, year) {
+  const now = nowYM();
+  let paidYear = 0, dueMonths = [];
+  for (let i = 1; i <= 12; i++) {
+    const k = ym(year, i), e = entry(m, k);
+    if (e.status === 'paid') paidYear += Number(e.amount || m.rate);
+    if (e.status === 'unpaid' && k <= now) dueMonths.push(k);
+  }
+  return { paidYear, dueMonths };
+}
+
+function payUrl(amount) {
+  const base = data.paymentLink.replace(/\/+$/, '');
+  return base + '/' + Number(amount).toFixed(2).replace(/\.00$/, '') + 'EUR';
+}
+
+function renderOverview() {
+  const s = data.summary;
+  if (!s) return;
+  $('overview').hidden = false;
+  $('balance').textContent = eur(s.balance);
+  $('balance').className = 'num' + (s.balance < 0 ? ' neg' : '');
+  $('income').textContent = '+ ' + eur(s.income);
+  $('expenses').textContent = '− ' + eur(s.expenses);
+  $('startNote').textContent = `inkl. Anfangsbestand ${eur(s.startBalance)}`;
+
+  const year = String(new Date().getFullYear());
+  const months = Object.entries(s.byMonth).filter(([k]) => k.startsWith(year));
+  const max = Math.max(1, ...months.flatMap(([, v]) => [v.income, v.expenses]));
+  $('monthSection').hidden = !months.length;
+  $('monthBars').innerHTML = months.map(([k, v]) => `
+    <div class="bar"><div class="t"><span class="n">${MONTH_NAMES[Number(k.slice(5)) - 1]}</span>
+      <span class="a">+${eur(v.income)} · −${eur(v.expenses)}</span></div>
+      <div class="track"><div class="fill in" style="width:${v.income / max * 100}%"></div></div>
+      <div class="track"><div class="fill out" style="width:${v.expenses / max * 100}%"></div></div></div>`).join('');
+
+  const cmax = Math.max(1, ...s.byCategory.map(c => c.amount));
+  $('catSection').hidden = !s.byCategory.length;
+  $('catBars').innerHTML = s.byCategory.map(c => `
+    <div class="bar"><div class="t"><span class="n">${c.category}</span><span class="a">${eur(c.amount)}</span></div>
+      <div class="track"><div class="fill" style="width:${c.amount / cmax * 100}%"></div></div></div>`).join('');
+}
+
+function render() {
+  const m = data.members.find(x => x.id === $('who').value);
+  $('view').hidden = !m;
+  if (!m) return;
+  const year = new Date().getFullYear(), now = nowYM();
+  const { paidYear, dueMonths } = stats(m, year);
+  const due = dueMonths.length * Number(m.rate);
+
+  $('status').className = 'status ' + (due ? 'open' : 'ok');
+  $('status').innerHTML = due
+    ? `<div class="ico">${ICON_OPEN}</div><div><strong>${eur(due)} offen</strong><span>${dueMonths.length} ${dueMonths.length === 1 ? 'Monat' : 'Monate'} noch nicht bezahlt</span></div>`
+    : `<div class="ico">${ICON_OK}</div><div><strong>Alles bezahlt</strong><span>Danke, ${m.name.split(' ')[0]}!</span></div>`;
+
+  $('months').innerHTML = MONTH_NAMES.map((n, i) => {
+    const k = ym(year, i + 1), e = entry(m, k);
+    const cls = e.status === 'unpaid' ? (k <= now ? 'due' : '') : e.status;
+    return `<div class="m ${cls}">${n}</div>`;
+  }).join('');
+
+  $('rate').textContent = eur(m.rate);
+  $('paidYear').textContent = eur(paidYear);
+  buildPayOptions(m, dueMonths.length);
+}
+
+let payMonths = [];
+
+// Offene Monate zuerst, danach bis zu 12 Monate im Voraus (nur Monate, die noch nicht bezahlt/übersprungen sind)
+function buildPayOptions(m, dueCount) {
+  const d = new Date();
+  payMonths = [];
+  for (let off = -d.getMonth(); off <= 12; off++) {
+    const t = new Date(d.getFullYear(), d.getMonth() + off, 1);
+    const k = ym(t.getFullYear(), t.getMonth() + 1);
+    if (entry(m, k).status === 'unpaid') payMonths.push(k);
+  }
+  const has = payMonths.length > 0;
+  $('payForm').hidden = !has; $('pay').hidden = !has; $('payNone').hidden = has; $('ref').parentElement.hidden = !has;
+  if (!has) return;
+  $('count').innerHTML = payMonths.map((k, i) => {
+    const n = i + 1, isDue = n <= dueCount;
+    const what = n === 1 ? monthLabel(k) : `${monthLabel(payMonths[0])} – ${monthLabel(k)}`;
+    return `<option value="${n}">${n} ${n > 1 ? 'Monate' : 'Monat'} · ${eur(n * m.rate)} (${what})${isDue ? '' : ' · im Voraus'}</option>`;
+  }).join('');
+  $('count').value = Math.max(dueCount, 1);
+  setAmountFromCount();
+}
+
+function setAmountFromCount() {
+  const m = data.members.find(x => x.id === $('who').value);
+  $('amount').value = Number($('count').value) * Number(m.rate);
+  updatePay();
+}
+
+function updatePay() {
+  const m = data.members.find(x => x.id === $('who').value);
+  if (!m || !payMonths.length) return;
+  const amount = parseFloat(String($('amount').value).replace(',', '.'));
+  const valid = amount > 0;
+  $('pay').href = valid ? payUrl(amount) : '#';
+  $('pay').setAttribute('aria-disabled', valid ? 'false' : 'true');
+  $('pay').textContent = valid ? `${eur(amount)} mit PayPal bezahlen` : 'Mit PayPal bezahlen';
+  const n = Number($('count').value) || 1, first = payMonths[0], last = payMonths[n - 1];
+  $('ref').textContent = `Kaffeekasse ${m.name} ` + (n === 1 ? monthLabel(first) : `${monthLabel(first)} – ${monthLabel(last)}`);
+}
+
+(async function init() {
+  try {
+    const res = await fetch('data.json', { cache: 'no-store' });
+    data = await res.json();
+  } catch (e) {
+    $('foot').textContent = 'Daten konnten nicht geladen werden.';
+    return;
+  }
+  data.members.slice().sort((a, b) => a.name.localeCompare(b.name, 'de')).forEach(m => {
+    const o = document.createElement('option');
+    o.value = m.id; o.textContent = m.name;
+    $('who').appendChild(o);
+  });
+  try { const s = localStorage.getItem('kk-who'); if (s && data.members.some(x => x.id === s)) $('who').value = s; } catch (e) {}
+  $('who').addEventListener('change', () => {
+    try { localStorage.setItem('kk-who', $('who').value); } catch (e) {}
+    render();
+  });
+  $('amount').addEventListener('input', updatePay);
+  $('count').addEventListener('change', setAmountFromCount);
+  $('copy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText($('ref').textContent); $('copy').textContent = '✓ Kopiert'; }
+    catch (e) { $('copy').textContent = 'Bitte manuell kopieren'; }
+    setTimeout(() => $('copy').textContent = 'Text kopieren', 2000);
+  });
+  $('foot').textContent = '';
+  renderOverview();
+  render();
+})();
+</script>
+</body>
+</html>
