@@ -1,0 +1,511 @@
+{
+ "paymentLink": "https://paypal.me/nowak10",
+ "summary": {
+  "startBalance": 303.74,
+  "income": 714.8,
+  "expenses": 707.48,
+  "balance": 311.06,
+  "byCategory": [
+   {
+    "category": "Kaffeebohnen",
+    "amount": 490.23
+   },
+   {
+    "category": "Sonstiges",
+    "amount": 148.0
+   },
+   {
+    "category": "Reinigung & Entkalker",
+    "amount": 33.5
+   },
+   {
+    "category": "Milch & Hafermilch",
+    "amount": 24.15
+   },
+   {
+    "category": "Zucker & Süßungsmittel",
+    "amount": 11.6
+   }
+  ],
+  "byMonth": {
+   "2026-01": {
+    "income": 47.0,
+    "expenses": 65.0
+   },
+   "2026-02": {
+    "income": 45.0,
+    "expenses": 115.7
+   },
+   "2026-03": {
+    "income": 52.0,
+    "expenses": 8.0
+   },
+   "2026-04": {
+    "income": 45.0,
+    "expenses": 128.0
+   },
+   "2026-05": {
+    "income": 58.8,
+    "expenses": 102.0
+   },
+   "2026-06": {
+    "income": 55.0,
+    "expenses": 0.0
+   },
+   "2026-07": {
+    "income": 70.0,
+    "expenses": 0.0
+   },
+   "2026-09": {
+    "income": 85.0,
+    "expenses": 125.35
+   },
+   "2026-10": {
+    "income": 95.0,
+    "expenses": 163.43
+   },
+   "2026-11": {
+    "income": 107.0,
+    "expenses": 0.0
+   },
+   "2026-12": {
+    "income": 55.0,
+    "expenses": 0.0
+   }
+  }
+ },
+ "members": [
+  {
+   "id": "m_1793131840565",
+   "name": "Onur Cagin",
+   "rate": 10,
+   "startMonth": "2026-01",
+   "endMonth": "",
+   "months": {
+    "2026-01": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-02": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-03": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-04": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-05": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-06": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-07": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-09": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-10": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-08": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-12": {
+     "status": "paid",
+     "amount": 10
+    }
+   }
+  },
+  {
+   "id": "m_1793131856509",
+   "name": "Ali Tenbel",
+   "rate": 10,
+   "startMonth": "2026-01",
+   "endMonth": "",
+   "months": {
+    "2026-01": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-05": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-06": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-02": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-03": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-07": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-04": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-09": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-10": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-08": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-12": {
+     "status": "skip",
+     "amount": 0
+    }
+   }
+  },
+  {
+   "id": "m_1793131866113",
+   "name": "Araber Logistik",
+   "rate": 10,
+   "startMonth": "2026-01",
+   "endMonth": "",
+   "months": {
+    "2026-01": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-02": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-03": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-04": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-05": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-06": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-07": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-08": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-09": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-10": {
+     "status": "paid",
+     "amount": 10
+    }
+   }
+  },
+  {
+   "id": "m_1793131872032",
+   "name": "Hana",
+   "rate": 10,
+   "startMonth": "2026-01",
+   "endMonth": "",
+   "months": {
+    "2026-01": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-02": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-03": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-04": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-07": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-06": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-05": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-09": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-10": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-12": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-08": {
+     "status": "skip",
+     "amount": 0
+    }
+   }
+  },
+  {
+   "id": "m_1793131895860",
+   "name": "Andreas Tifti",
+   "rate": 5,
+   "startMonth": "2026-01",
+   "endMonth": "",
+   "months": {
+    "2026-01": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-02": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-03": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-07": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-06": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-05": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-09": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-10": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-11": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-12": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-04": {
+     "status": "paid",
+     "amount": 5
+    },
+    "2026-08": {
+     "status": "skip",
+     "amount": 0
+    }
+   }
+  },
+  {
+   "id": "m_1793131915519",
+   "name": "Micha",
+   "rate": 10,
+   "startMonth": "2026-06",
+   "endMonth": "",
+   "months": {
+    "2026-12": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-10": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-09": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-08": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-07": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-06": {
+     "status": "paid",
+     "amount": 10
+    }
+   }
+  },
+  {
+   "id": "m_1793131931348",
+   "name": "Ruben",
+   "rate": 10,
+   "startMonth": "2026-07",
+   "endMonth": "2026-09",
+   "months": {
+    "2026-07": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-08": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-09": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-10": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-11": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2026-12": {
+     "status": "skip",
+     "amount": 0
+    }
+   }
+  },
+  {
+   "id": "m_1793131952186",
+   "name": "Phyo",
+   "rate": 10,
+   "startMonth": "2026-09",
+   "endMonth": "",
+   "months": {
+    "2026-09": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-10": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-12": {
+     "status": "paid",
+     "amount": 10
+    }
+   }
+  },
+  {
+   "id": "m_1793131966394",
+   "name": "Mustafa Bozkurt",
+   "rate": 10,
+   "startMonth": "2026-10",
+   "endMonth": "",
+   "months": {
+    "2026-10": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    }
+   }
+  },
+  {
+   "id": "m_1793131982853",
+   "name": "Vladimir Keller (Logistiker)",
+   "rate": 10,
+   "startMonth": "2026-11",
+   "endMonth": "",
+   "months": {
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    }
+   }
+  },
+  {
+   "id": "m_1793263965054",
+   "name": "Johann Pfeil Logistik",
+   "rate": 10,
+   "startMonth": "2026-11",
+   "endMonth": "",
+   "months": {
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-12": {
+     "status": "paid",
+     "amount": 10
+    }
+   }
+  },
+  {
+   "id": "m_1793628429527",
+   "name": "Andrej Kaufmann",
+   "rate": 10,
+   "startMonth": "2026-11",
+   "endMonth": "",
+   "months": {
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    }
+   }
+  }
+ ]
+}
