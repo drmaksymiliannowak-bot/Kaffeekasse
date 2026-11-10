@@ -3,8 +3,8 @@
  "summary": {
   "startBalance": 303.74,
   "income": 714.8,
-  "expenses": 707.48,
-  "balance": 311.06,
+  "expenses": 717.26,
+  "balance": 301.28,
   "byCategory": [
    {
     "category": "Kaffeebohnen",
@@ -20,11 +20,11 @@
    },
    {
     "category": "Milch & Hafermilch",
-    "amount": 24.15
+    "amount": 31.15
    },
    {
     "category": "Zucker & Süßungsmittel",
-    "amount": 11.6
+    "amount": 14.38
    }
   ],
   "byMonth": {
@@ -66,10 +66,14 @@
    },
    "2026-11": {
     "income": 107.0,
-    "expenses": 0.0
+    "expenses": 9.78
    },
    "2026-12": {
-    "income": 55.0,
+    "income": 20.0,
+    "expenses": 0.0
+   },
+   "2027-01": {
+    "income": 35.0,
     "expenses": 0.0
    }
   }
@@ -127,6 +131,10 @@
      "amount": 10
     },
     "2026-12": {
+     "status": "skip",
+     "amount": 0
+    },
+    "2027-01": {
      "status": "paid",
      "amount": 10
     }
@@ -286,12 +294,16 @@
      "amount": 10
     },
     "2026-12": {
-     "status": "paid",
-     "amount": 10
+     "status": "skip",
+     "amount": 0
     },
     "2026-08": {
      "status": "skip",
      "amount": 0
+    },
+    "2027-01": {
+     "status": "paid",
+     "amount": 10
     }
    }
   },
@@ -339,8 +351,8 @@
      "amount": 5
     },
     "2026-12": {
-     "status": "paid",
-     "amount": 5
+     "status": "skip",
+     "amount": 0
     },
     "2026-04": {
      "status": "paid",
@@ -349,6 +361,10 @@
     "2026-08": {
      "status": "skip",
      "amount": 0
+    },
+    "2027-01": {
+     "status": "paid",
+     "amount": 5
     }
    }
   },
@@ -360,8 +376,8 @@
    "endMonth": "",
    "months": {
     "2026-12": {
-     "status": "paid",
-     "amount": 10
+     "status": "skip",
+     "amount": 0
     },
     "2026-11": {
      "status": "paid",
@@ -384,6 +400,10 @@
      "amount": 10
     },
     "2026-06": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2027-01": {
      "status": "paid",
      "amount": 10
     }
