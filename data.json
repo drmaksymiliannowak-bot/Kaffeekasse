@@ -2,9 +2,9 @@
  "paymentLink": "https://paypal.me/nowak10",
  "summary": {
   "startBalance": 303.74,
-  "income": 729.8,
+  "income": 739.8,
   "expenses": 717.26,
-  "balance": 316.28,
+  "balance": 326.28,
   "byCategory": [
    {
     "category": "Kaffeebohnen",
@@ -65,7 +65,7 @@
     "expenses": 163.43
    },
    "2026-11": {
-    "income": 117.0,
+    "income": 127.0,
     "expenses": 9.78
    },
    "2026-12": {
@@ -541,6 +541,19 @@
     "2026-12": {
      "status": "paid",
      "amount": 5
+    }
+   }
+  },
+  {
+   "id": "m_1794825057292",
+   "name": "Danijel",
+   "rate": 10,
+   "startMonth": "2026-11",
+   "endMonth": "",
+   "months": {
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
     }
    }
   }
