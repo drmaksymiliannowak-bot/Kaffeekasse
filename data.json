@@ -2,9 +2,9 @@
  "paymentLink": "https://paypal.me/nowak10",
  "summary": {
   "startBalance": 303.74,
-  "income": 714.8,
+  "income": 729.8,
   "expenses": 717.26,
-  "balance": 301.28,
+  "balance": 316.28,
   "byCategory": [
    {
     "category": "Kaffeebohnen",
@@ -65,11 +65,11 @@
     "expenses": 163.43
    },
    "2026-11": {
-    "income": 107.0,
+    "income": 117.0,
     "expenses": 9.78
    },
    "2026-12": {
-    "income": 20.0,
+    "income": 25.0,
     "expenses": 0.0
    },
    "2027-01": {
@@ -524,6 +524,23 @@
     "2026-11": {
      "status": "paid",
      "amount": 10
+    }
+   }
+  },
+  {
+   "id": "m_1794549482612",
+   "name": "Ronaldinho",
+   "rate": 10,
+   "startMonth": "2026-11",
+   "endMonth": "",
+   "months": {
+    "2026-11": {
+     "status": "paid",
+     "amount": 10
+    },
+    "2026-12": {
+     "status": "paid",
+     "amount": 5
     }
    }
   }
